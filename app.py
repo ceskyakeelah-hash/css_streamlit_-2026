@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 # Page configuration
 st.set_page_config(
@@ -32,6 +33,21 @@ st.markdown("""
 - Applied analytics with real-world datasets  
 """)
 
+# Interactive chart: Research focus areas
+focus_data = pd.DataFrame({
+    "Area": [
+        "Data Analytics",
+        "Statistical Modelling",
+        "Machine Learning",
+        "Numerical Methods",
+        "Social Impact Analytics"
+    ],
+    "Emphasis Level": [5, 4, 3, 4, 5]
+})
+
+st.subheader("Research Focus Emphasis")
+st.bar_chart(focus_data.set_index("Area"))
+
 st.divider()
 
 # Academic Background
@@ -64,13 +80,28 @@ st.markdown("""
 
 st.divider()
 
-# Technical Skills
-st.header("🛠 Technical Skills")
-st.markdown("""
-**Programming:** Python, R, C++, Java  
-**Data & Analytics:** Pandas, NumPy, Statistical Modelling  
-**Tools:** Excel, LaTeX  
-""")
+# Skills section with interactive sliders
+st.header("🛠 Technical Skills (Self-Assessed)")
+
+python_level = st.slider("Python", 0, 5, 4)
+r_level = st.slider("R", 0, 5, 4)
+cpp_level = st.slider("C++", 0, 5, 3)
+java_level = st.slider("Java", 0, 5, 3)
+stats_level = st.slider("Statistical Modelling", 0, 5, 5)
+
+skills_df = pd.DataFrame({
+    "Skill": ["Python", "R", "C++", "Java", "Statistical Modelling"],
+    "Proficiency": [
+        python_level,
+        r_level,
+        cpp_level,
+        java_level,
+        stats_level
+    ]
+})
+
+st.subheader("Skills Proficiency Overview")
+st.line_chart(skills_df.set_index("Skill"))
 
 st.divider()
 
@@ -92,4 +123,3 @@ st.markdown("""
 """)
 
 st.caption("© 2026 | Researcher Profile – Cesky F. Nengudza")
-
