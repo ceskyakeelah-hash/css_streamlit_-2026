@@ -1,1 +1,1 @@
-# css2026-researcher-profile.streamlit.app
+# css2026-researcher-profiler
